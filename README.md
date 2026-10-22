@@ -1,5 +1,14 @@
 # Press — Mobile
 
+> **Template copy.** This repository is one of the name-substituted React
+> Native CLI template copies in `bookchaowalit-mobile`. The canonical template
+> is [`bookchaowalit-mobile/portfolio-projects-showcase-mobile`](https://github.com/bookchaowalit-mobile/portfolio-projects-showcase-mobile);
+> fix template-level problems there first. Consolidation/archive of the copies
+> is pending owner decision D5 (BD-033), see
+> `repository-catalog/portfolio/MOBILE-CONSOLIDATION-2026-10.md` in solo-empire.
+> There are no native `android/`/`ios/` projects; CI builds the Metro Android
+> JS bundle.
+
 React Native CLI (bare workflow) mobile app for **Press**.
 
 Part of [Chaowalit Greepoke](https://bookchaowalit.com)'s 101 Portfolio Projects.
@@ -40,7 +49,10 @@ mkdir -p dist && npm run bundle:android   # Metro bundle smoke check
 ```
 
 Pure logic lives in `src/lib/` and is unit-tested with Jest (`__tests__/`).
-CI (`.github/workflows/build.yml`) runs all of the above and fails on errors.
+CI (`.github/workflows/ci.yml`) calls the shared
+`bookchaowalit/platform-ci-workflows` v1.1.1 jobs (pinned by SHA): `npm ci`,
+lint, typecheck, Jest, the Android bundle, and the security scans. Reviewed
+scanner exceptions are in `osv-scanner.toml` and `.trivyignore`.
 
 ## Related
 
